@@ -19,9 +19,9 @@ Arguments:
 
 Note that elements of "edgeWeights" need not be probabilities (meaning its rows need not be normalized), and the random surfer probabilities should not be incorporated into it. The "powerIteration" function will perform normalization and integration of the random surfer probabilities.
 
-#### Dependencies: 
+#### Dependencies
 
-The pagerank module relies on two relatively standard Python libraries.
+The pagerank module relies on two relatively standard Python libraries:
 
 1.  [numpy](http://www.numpy.org/) 
 2.  [pandas](http://pandas.pydata.org/)
