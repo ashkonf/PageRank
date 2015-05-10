@@ -36,11 +36,6 @@ def __integrateRandomSurfer(nodes, transitionProbs, rsp):
     new = transitionProbs.copy()
     return new.multiply(1.0 - float(len(nodes)) * alpha) + alpha
 
-def __exponentiateMatrix(matrix, exponent):
-    for _ in range(exponent - 1):
-        matrix = matrix.dot(matrix)
-    return matrix
-
 def __normalizeRows(matrix):
     return matrix.div(matrix.sum(axis=1), axis=0)
 
