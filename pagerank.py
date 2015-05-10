@@ -9,7 +9,7 @@ def __extractNodes(matrix):
     nodes = set()
     for key1 in matrix:
         nodes.add(key1)
-        for key2 in matrix:
+        for key2 in matrix[key1]:
             nodes.add(key2)
     return nodes
 
