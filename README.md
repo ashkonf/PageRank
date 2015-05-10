@@ -3,7 +3,7 @@ A Python implementation of Google's famous PageRank algorithm.
 
 #### Usage
 
-The pagerank module exports one public method:
+The pagerank module exports one public method: 
   `powerIteration(edgeWeights, rsp=0.15, maxIterations=100)`
   
 Arguments:
