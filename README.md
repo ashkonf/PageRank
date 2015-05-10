@@ -1,7 +1,7 @@
 # PageRank
 A Python implementation of Google's famous PageRank algorithm.
 
-#### Usage
+### Usage
 
 The pagerank module exports one public function:
 
@@ -21,7 +21,7 @@ This function returns a pandas series whose keys are node names and whose values
 
 Note that elements of "edgeWeights" need not be probabilities (meaning its rows need not be normalized), and the random surfer probabilities should not be incorporated into it. The "powerIteration" function will perform normalization and integration of the random surfer probabilities.
 
-#### Dependencies
+### Dependencies
 
 The pagerank module relies on two relatively standard Python libraries:
 
