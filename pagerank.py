@@ -28,13 +28,10 @@ def __startState(nodes):
     startProb = 1.0 / float(len(nodes))
     return pandas.Series({node : startProb for node in nodes})
 
-def __calculateAlpha(numNodes, rsp):
-    return 1.0 / float(numNodes) * rsp
-
 def __integrateRandomSurfer(nodes, transitionProbs, rsp):
-    alpha = __calculateAlpha(len(nodes), rsp)
+    alpha = 1.0 / float(len(nodes)) * rsp
     new = transitionProbs.copy()
-    return new.multiply(1.0 - float(len(nodes)) * alpha) + alpha
+    return new.multiply(1.0 - rsp) + alpha
 
 def __normalizeRows(matrix):
     return matrix.div(matrix.sum(axis=1), axis=0)
