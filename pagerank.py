@@ -1,6 +1,7 @@
 import os
 import sys
 import copy
+import math
 
 import numpy
 import pandas
@@ -35,7 +36,10 @@ def __integrateRandomSurfer(nodes, transitionProbs, rsp):
 def __normalizeRows(matrix):
     return matrix.div(matrix.sum(axis=1), axis=0)
 
-def powerIteration(edgeWeights, rsp=0.15, maxIterations=100):
+def __euclideanNorm(series):
+    return math.sqrt(series.dot(series))
+
+def powerIteration(edgeWeights, rsp=0.15, epsilon=0.00001, maxIterations=1000):
     # Clerical work:
     nodes = __extractNodes(edgeWeights)
     edgeWeights = __makeSquare(edgeWeights, nodes)
@@ -50,6 +54,7 @@ def powerIteration(edgeWeights, rsp=0.15, maxIterations=100):
     for iteration in range(maxIterations):
         oldState = state.copy()
         state = state.dot(transitionProbs)
-        if (state == oldState).all(): break
+        delta = state - oldState
+        if __euclideanNorm(delta) < epsilon: break
 
     return state
