@@ -5,7 +5,7 @@ A Python implementation of Google's famous PageRank algorithm.
 
 The pagerank module exports one public function:
 
-    powerIteration(edgeWeights, rsp=0.15, maxIterations=100)
+        powerIteration(edgeWeights, rsp=0.15, maxIterations=100)
   
 Arguments:
 
