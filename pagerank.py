@@ -30,8 +30,7 @@ def __startState(nodes):
 
 def __integrateRandomSurfer(nodes, transitionProbs, rsp):
     alpha = 1.0 / float(len(nodes)) * rsp
-    new = transitionProbs.copy()
-    return new.multiply(1.0 - rsp) + alpha
+    return transitionProbs.copy().multiply(1.0 - rsp) + alpha
 
 def __normalizeRows(matrix):
     return matrix.div(matrix.sum(axis=1), axis=0)
