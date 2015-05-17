@@ -15,7 +15,9 @@ This function returns a pandas series whose keys are node names and whose values
   
 ##### Arguments:
 
-1.  **edgeWeights**: The graph to which the PageRank algorithm is applied represented as the weights between its nodes. It should be encoded sparsely as a once nested dictionary where keys and nested keys are node names and values are weights. Other datastructures with the same nested key-value interface, such as pandas matrices, are also acceptable. 
+1.  **edgeWeights**: The graph to which the PageRank algorithm is applied represented as the weights between its nodes. It should be encoded in one of two ways:
+     a. Sparsely as a once nested dictionary where keys and nested keys are node names and values are weights. Other datastructures with the same nested key-value interface, such as pandas matrices, are also acceptable. 
+     b. asdf
 2.  **rsp**: The random surfer probability that represents the probability with which the random walk through the graph will deviate from its edges and instead jump randomly to any node in the graph. 
 3.  **epsilon**: The threshold of convergence. If the Euclidean norm of the difference between the approximations of the steady state vector before and after an iteration of power iteration is smaller than epsilon, the algorithm will consider itself to have converged and will terminate.
 4.  **maxIterations**: The number of iterations after which power iteration will be terminated even if it has not yet converged.
