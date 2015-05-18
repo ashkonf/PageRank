@@ -20,7 +20,7 @@ This function returns a pandas series whose keys are node names and whose values
 3.  **epsilon**: The threshold of convergence. If the Euclidean norm of the difference between the approximations of the steady state vector before and after an iteration of power iteration is smaller than epsilon, the algorithm will consider itself to have converged and will terminate.
 4.  **maxIterations**: The number of iterations after which power iteration will be terminated even if it has not yet converged.
 
-Note that elements of "edgeWeights" need not be probabilities (meaning its rows need not be normalized), and the random surfer probabilities should not be incorporated into it. The "powerIteration" function will perform normalization and integration of the random surfer probabilities.
+Note that elements of "transitionWeights" need not be probabilities (meaning its rows need not be normalized), and the random surfer probabilities should not be incorporated into it. The "powerIteration" function will perform normalization and integration of the random surfer probabilities.
 
 ### Dependencies
 
