@@ -56,16 +56,16 @@ def __integrateRandomSurfer(nodes, transitionProbs, rsp):
     alpha = 1.0 / float(len(nodes)) * rsp
     return transitionProbs.copy().multiply(1.0 - rsp) + alpha
 
-def powerIteration(edgeWeights, rsp=0.15, epsilon=0.00001, maxIterations=1000):
+def powerIteration(transitionWeights, rsp=0.15, epsilon=0.00001, maxIterations=1000):
     # Clerical work:
-    edgeWeights = pandas.DataFrame(edgeWeights)
-    nodes = __extractNodes(edgeWeights)
-    edgeWeights = __makeSquare(edgeWeights, nodes, default=0.0)
-    edgeWeights = __ensureRowsPositive(edgeWeights)
+    transitionWeights = pandas.DataFrame(transitionWeights)
+    nodes = __extractNodes(transitionWeights)
+    transitionWeights = __makeSquare(transitionWeights, nodes, default=0.0)
+    transitionWeights = __ensureRowsPositive(transitionWeights)
 
     # Setup:
     state = __startState(nodes)
-    transitionProbs = __normalizeRows(edgeWeights)
+    transitionProbs = __normalizeRows(transitionWeights)
     transitionProbs = __integrateRandomSurfer(nodes, transitionProbs, rsp)
     
     # Power iteration:
