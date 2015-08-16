@@ -18,17 +18,14 @@ def __extractNodes(matrix):
 def __makeSquare(matrix, keys, default=0.0):
     matrix = matrix.copy()
     
-    # Add in missing columns:
-    for key in keys:
-        if not key in matrix:
-            matrix[key] = pandas.Series(numpy.zeros(1), index=matrix.index)
+    def insertMissingColumns(matrix):
+        for key in keys:
+            if not key in matrix:
+                matrix[key] = pandas.Series(default, index=matrix.index)
+        return matrix
 
-    # Add in missing rows:
-    matrix = matrix.T
-    for key in keys:
-        if not key in matrix:
-            matrix[key] = pandas.Series(numpy.zeros(1), index=matrix.index)
-    matrix = matrix.T
+    matrix = insertMissingColumns(matrix) # insert missing columns
+    matrix = insertMissingColumns(matrix.T).T # insert missing rows
 
     return matrix.fillna(default)
 
