@@ -24,7 +24,7 @@ Note that elements of "transitionWeights" need not be probabilities (meaning its
 
 ### Dependencies
 
-This pagerank module relies on two relatively standard Python libraries:
+This module relies on two relatively standard Python libraries:
 
 1.  [numpy](http://www.numpy.org/) 
 2.  [pandas](http://pandas.pydata.org/)
