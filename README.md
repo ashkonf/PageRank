@@ -8,10 +8,6 @@ The pagerank module exports one public function:
      powerIteration(transitionWeights, rsp=0.15, epsilon=0.00001, maxIterations=1000)
      
 This function applies the PageRank algorithm to a provided graph to determine the steady probabilities with which a random walk through the graph will end up at each node. It does so using power iteration, an algorithm approximating steady state probabilities by iteratively improving them until convergence. This algorithm is guaranteed to converege to the correct steady state probabilities for ergodic Markov chains, which PageRank graphs are.
-
-##### Return value:
-
-This function returns a pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This series can be treated as a dict.
   
 ##### Arguments:
 
@@ -21,6 +17,10 @@ This function returns a pandas series whose keys are node names and whose values
 4.  **maxIterations**: The number of iterations after which power iteration will be terminated even if it has not yet converged.
 
 Note that elements of "transitionWeights" need not be probabilities (meaning its rows need not be normalized), and the random surfer probabilities should not be incorporated into it. The "powerIteration" function will perform normalization and integration of the random surfer probabilities.
+
+##### Return value:
+
+This function returns a pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This series can be treated as a dict.
 
 ### Dependencies
 
