@@ -22,6 +22,15 @@ Note that elements of "transitionWeights" need not be probabilities (meaning its
 
 This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. Such a Pandas series can be treated as a dict.
 
+### Example
+
+An implementation of TextRank and three stories one can apply it to are included as a sample usage of the PageRank module. TextRank is an unsupervised keyword significance scoring algorithm that applies PageRank to a graph built from words found in a document to determine the significance of each word. The textrank module, located in the TextRank directory, implemented the TextRank algorithm. It's main method applies TextRank to three fairy tales, Rapunzel, Cinderalla and Beauty and the Beast. It then prints out the results, an ordered list of keywords and their associated significance scores according to the algorithm. To run this example, simply navigate to the TextRank directory and run textrank.py:
+
+     cd TextRank/
+     python textrank.py
+
+For more information about TextRank, see the [original paper](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf) that proposed it.
+
 ### Dependencies
 
 This module relies on two relatively standard Python libraries:
