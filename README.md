@@ -33,10 +33,6 @@ The textrank module's main method applies TextRank to three fairy tales, Rapunze
      
 For more information about TextRank, see the [original paper](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf) that proposed it.
 
-##### Return value:
-
-This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. Such a Pandas series can be treated as a dict.
-
 ### Dependencies
 
 This module relies on two relatively standard Python libraries:
