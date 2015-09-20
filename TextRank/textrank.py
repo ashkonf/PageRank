@@ -26,27 +26,27 @@ import pagerank
 
 ## TextRank #####################################################################################
     
-def preprocessDocument(document, relevantPosTags):
+def __preprocessDocument(document, relevantPosTags):
     '''
     This function accepts a string representation 
     of a document as input, and returns a tokenized
     list of words corresponding to that document.
     '''
     
-    words = tokenizeWords(document)
-    posTags = tagPartsOfSpeech(words)
+    words = __tokenizeWords(document)
+    posTags = __tagPartsOfSpeech(words)
     
     # Filter out words with irrelevant POS tags
     filteredWords = []
     for index, word in enumerate(words):
         word = word.lower()
         tag = posTags[index]
-        if not isPunctuation(word) and tag in relevantPosTags:
+        if not __isPunctuation(word) and tag in relevantPosTags:
             filteredWords.append(word)
 
     return filteredWords
 
-def textrank(document, windowSize=2, randomSurferProb=0.15, relevantPosTags=["NN", "ADJ"]):
+def textrank(document, windowSize=2, rsp=0.15, relevantPosTags=["NN", "ADJ"]):
     '''
     This function accepts a string representation
     of a document and three hyperperameters as input.
@@ -59,7 +59,7 @@ def textrank(document, windowSize=2, randomSurferProb=0.15, relevantPosTags=["NN
     '''
     
     # Tokenize document:
-    words = preprocessDocument(document, relevantPosTags)
+    words = __preprocessDocument(document, relevantPosTags)
     
     # Build a weighted graph where nodes are words and
     # edge weights are the number of times words cooccur
@@ -75,33 +75,24 @@ def textrank(document, windowSize=2, randomSurferProb=0.15, relevantPosTags=["NN
                 edgeWeights[word][otherWord] += 1.0
 
     # Apply PageRank to the weighted graph:
-    wordProbabilities = pagerank.powerIteration(edgeWeights, rsp=randomSurferProb)
+    wordProbabilities = pagerank.powerIteration(edgeWeights, rsp=rsp)
     wordProbabilities.sort(ascending=False)
 
     return wordProbabilities
 
 ## NLP utilities ################################################################################
 
-def asciiOnly(string):
+def __asciiOnly(string):
     return "".join([char if ord(char) < 128 else "" for char in string])
 
-PUNCTUATION = set([".", "?", "!", ",", "\"", ":", ";", "'", "-"])
+def __isPunctuation(word):
+    return word in [".", "?", "!", ",", "\"", ":", ";", "'", "-"]
 
-def isPunctuation(word):
-    return word in PUNCTUATION
-
-def tagPartsOfSpeech(words):
+def __tagPartsOfSpeech(words):
     return [pair[1] for pair in nltk.pos_tag(words)]
 
-def tokenizeWords(sentence):
+def __tokenizeWords(sentence):
     return nltk.tokenize.word_tokenize(sentence)
-
-def tokenizeSentences(text):
-    initial = nltk.tokenize.sent_tokenize(text)
-    sentences = []
-    for sentence in initial:
-        sentences.append(sentence.replace("\n", " "))
-    return sentences
 
 ## tests ########################################################################################
 
@@ -110,7 +101,7 @@ def applyTextRank(fileName, title):
     print "Reading \"%s\" ..." % title
     filePath = os.path.join(os.path.dirname(__file__), fileName)
     document = open(filePath).read()
-    document = asciiOnly(document)
+    document = __asciiOnly(document)
     
     print "Applying TextRank to \"%s\" ..." % title
     keywordScores = textrank(document)
