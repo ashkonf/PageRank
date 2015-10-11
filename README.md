@@ -20,7 +20,7 @@ Note that elements of "transitionWeights" need not be probabilities (meaning its
 
 ##### Return value:
 
-This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. Such a Pandas series can be treated as a dict.
+This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This Pandas series can be treated as a dict.
 
 ### TextRank Example
 
@@ -32,10 +32,6 @@ The textrank module's main method applies TextRank to three fairy tales, Rapunze
      python textrank.py
      
 For more information about TextRank, see the [original paper](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf) that proposed it.
-
-##### Return value:
-
-This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. Such a Pandas series can be treated as a dict.
 
 ### Dependencies
 
