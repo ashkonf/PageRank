@@ -18,9 +18,7 @@ Arguments:
 
 Note that elements of "transitionWeights" need not be probabilities (meaning its rows need not be normalized), and the random surfer probabilities should not be incorporated into it. The "powerIteration" function will perform normalization and integration of the random surfer probabilities.
 
-Return value:
-
-This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This Pandas series can be treated as a dict.
+Return value: This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This Pandas series can be treated as a dict.
 
 ### Dependencies
 
@@ -60,9 +58,7 @@ Arguments:
 3.  **rsp**: Again the random surfer probability that represents the probability with which the random walk through the graph will deviate from its edges and instead jump randomly to any node in the graph.
 4.  **relevantPosTags**: The TextRank algorithm will filter the words in a document down to only those of certain parts of speech. The default implementation of the algorithm only considers nouns and adjectives. See the [original paper](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf) that proposed TextRank for a justification of this decision.
 
-Return Value: 
-
-This function returns a list of words found in the document (filtered by parts of speech) in descending order of node weights.
+Return Value: This function returns a list of words found in the document (filtered by parts of speech) in descending order of node weights.
 
 #### Function: applyTextRank
 
@@ -75,8 +71,6 @@ Arguments:
 1.  **fileName**: The name or full path of the file that contains the document the TextRank algorithm will be applied to.
 2.  **title**: The document's title, an optional argument used only in printed progress indicators.
 
-Return value: 
-
-This function has no return value, and instead prints out its results.
+Return value: This function has no return value, and instead prints out its results.
 
 If you would like to apply TextRank to a story or document of your choosing, add a plain text file containing the story to the TextRank directory and call the applyTextRank function, passing in the name of the file and optionally the document's title.
