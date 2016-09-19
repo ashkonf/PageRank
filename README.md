@@ -29,7 +29,7 @@ This module relies on two relatively standard Python libraries:
 1.  [Numpy](http://www.numpy.org/) 
 2.  [Pandas](http://pandas.pydata.org/)
 
-### Example Usage: TextRank
+## Example Usage: TextRank
 
 An implementation of TextRank and three stories one can apply it to are included as a sample usage of the PageRank module. TextRank is an unsupervised keyword significance scoring algorithm that applies PageRank to a graph built from words found in a document to determine the significance of each word. The textrank module, located in the TextRank directory, implements the TextRank algorithm.
 
@@ -40,14 +40,14 @@ The textrank module's main method applies TextRank to three fairy tales, Rapunze
      
 For more information about TextRank, see the [original paper](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf) that proposed it.
 
-#### TextRank Implementation
+### TextRank Implementation
 
 The textrank module also exports two public functions:
 
      textrank(document, windowSize=2, rsp=0.15, relevantPosTags=["NN", "ADJ"])
      applyTextRank(fileName, title="a document")
 
-##### Function: textrank
+#### Function: textrank
 
      textrank(document, windowSize=2, rsp=0.15, relevantPosTags=["NN", "ADJ"])
 
@@ -64,7 +64,7 @@ Return Value:
 
 This function returns a list of words found in the document (filtered by parts of speech) in descending order of node weights.
 
-##### Function: applyTextRank
+#### Function: applyTextRank
 
      applyTextRank(fileName, title="a document")
 
