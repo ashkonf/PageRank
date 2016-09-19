@@ -96,7 +96,7 @@ def __tokenizeWords(sentence):
 
 ## tests ########################################################################################
 
-def applyTextRank(fileName, title):
+def applyTextRank(fileName, title="a document"):
     print
     print "Reading \"%s\" ..." % title
     filePath = os.path.join(os.path.dirname(__file__), fileName)
