@@ -20,7 +20,7 @@ Note that elements of "transitionWeights" need not be probabilities (meaning its
 
 Return value: This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This Pandas series can be treated as a dict.
 
-### Dependencies
+## Dependencies
 
 This module relies on two relatively standard Python libraries:
 
