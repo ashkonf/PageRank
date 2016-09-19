@@ -22,7 +22,7 @@ Note that elements of "transitionWeights" need not be probabilities (meaning its
 
 This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This Pandas series can be treated as a dict.
 
-### TextRank Example
+### Example: TextRank
 
 An implementation of TextRank and three stories one can apply it to are included as a sample usage of the PageRank module. TextRank is an unsupervised keyword significance scoring algorithm that applies PageRank to a graph built from words found in a document to determine the significance of each word. The textrank module, located in the TextRank directory, implements the TextRank algorithm.
 
