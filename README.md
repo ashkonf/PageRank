@@ -1,7 +1,7 @@
 # PageRank
 A Python implementation of Google's famous PageRank algorithm.
 
-### Usage
+## Usage
 
 The pagerank module exports one public function:
 
