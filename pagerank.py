@@ -70,6 +70,7 @@ def powerIteration(transitionWeights, rsp=0.15, epsilon=0.00001, maxIterations=1
         oldState = state.copy()
         state = state.dot(transitionProbs)
         delta = state - oldState
-        if __euclideanNorm(delta) < epsilon: break
+        if __euclideanNorm(delta) < epsilon: 
+            break
 
     return state
