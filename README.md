@@ -53,10 +53,13 @@ The textrank function implements the TextRank algorithm. It creates a graph repr
 
 Arguments:
 
-1.  **document**: A string representing a document. Note that all characters in the string must be standard ASCII characters to avoid exceptions. Type: string.
-2.  **windowSize**: The width of the window in which two words must fall to be considered to have co-occured. For a window size of 2, the default value of this argument, a word will be considered to have co-occurred with any word one or two words away from it in the document. Type: integer.
-3.  **rsp**: Again the random surfer probability that represents the probability with which the random walk through the graph will deviate from its edges and instead jump randomly to any node in the graph. Type: float.
-4.  **relevantPosTags**: The TextRank algorithm will filter the words in a document down to only those of certain parts of speech. The default implementation of the algorithm only considers nouns and adjectives. See the [original paper](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf) that proposed TextRank for a justification of this decision. Type: list of strings.
+| Name            | Type      | Description                                                                                                                                                                                                                                                                    | Optional? | Default Value |
+|-----------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|---------------|
+| document        | str       | A string representing a document. Note that all characters in the string must be standard ASCII characters to avoid exceptions.                                                                                                                                                | False     | N/A           |
+| windowSize      | int       | The width of the window in which two words must fall to be considered to have co-occured. For a window size of 2, the default value of this argument, a word will be considered to have co-occurred with any word one or two words away from it in the document.               | True      | 2             |
+| rsp             | float     | Again the random surfer probability that represents the probability with which the random walk through the graph will deviate from its edges and instead jump randomly to any node in the graph.                                                                               | True      | 0.15          |
+| relevantPosTags | list(str) | The TextRank algorithm will filter the words in a document down to only those of certain parts of speech. The default implementation of the algorithm only considers nouns and adjectives. See the original paper that proposed TextRank for a justification of this decision. | True      | ["NN", "ADJ"] |
+
 
 Return Value: This function returns a list of words found in the document (filtered by parts of speech) in descending order of node weights.
 
