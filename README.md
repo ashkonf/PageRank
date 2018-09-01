@@ -72,11 +72,10 @@ Return Value: This function returns a list of words found in the document (filte
 The applyTextRank function is a wrapper around the textrank function. It accepts a plain text document as its input, transfors that document into the data format expected by the textrank function, calls the textrank function to perform the textrank algorithm, and prints out the result cleanly along with a few helpful progress indicators.
 
 Arguments:
-
-| Name     | Type | Description                                                                                             | Optional? |
-|----------|------|---------------------------------------------------------------------------------------------------------|-----------|
-| fileName | str  | The name or full path of the file that contains the document the TextRank algorithm will be applied to. | False     |
-| title    | str  | The document's title, an optional argument used only in printed progress indicators.                    | True      |
+| Name     | Type | Description                                                                                             | Optional? | Default Value |
+|—————|———|————————————————————————————————————————————————————|—————|————|
+| fileName | str  | The name or full path of the file that contains the document the TextRank algorithm will be applied to. | False     | N/A  |
+| title    | str  | The document's title, an optional argument used only in printed progress indicators.                    | True      | “a document” |
 
 Return value: This function has no return value, and instead prints out its results.
 
