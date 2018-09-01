@@ -68,6 +68,12 @@ The applyTextRank function is a wrapper around the textrank function. It accepts
 
 Arguments:
 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 1.  **fileName**: The name or full path of the file that contains the document the TextRank algorithm will be applied to. Type: string.
 2.  **title**: The document's title, an optional argument used only in printed progress indicators. Type: string.
 
