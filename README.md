@@ -73,7 +73,7 @@ The applyTextRank function is a wrapper around the textrank function. It accepts
 
 Arguments:
 
-| Name     | Type                                        | Description                                                                                             | Optiona? | Default Value |
+| Name     | Type                                        | Description                                                                                             | Optional? | Default Value |
 |----------|---------------------------------------------|---------------------------------------------------------------------------------------------------------|----------|---------------|
 | fileName | Once nested list or dictionary, or similar. | The name or full path of the file that contains the document the TextRank algorithm will be applied to. | False    | N/A           |
 | title    | str                                         | The document's title, an optional argument used only in printed progress indicators.                    | True     | "a document"  |
