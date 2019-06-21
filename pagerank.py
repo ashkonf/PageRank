@@ -49,9 +49,9 @@ def __startState(nodes):
     startProb = 1.0 / float(len(nodes))
     return pandas.Series({node : startProb for node in nodes})
 
-def __integrateRandomSurfer(nodes, transitionProbs, rsp):
+def __integrateRandomSurfer(nodes, transitionProbabilities, rsp):
     alpha = 1.0 / float(len(nodes)) * rsp
-    return transitionProbs.copy().multiply(1.0 - rsp) + alpha
+    return transitionProbabilities.copy().multiply(1.0 - rsp) + alpha
 
 def powerIteration(transitionWeights, rsp=0.15, epsilon=0.00001, maxIterations=1000):
     # Clerical work:
@@ -62,14 +62,15 @@ def powerIteration(transitionWeights, rsp=0.15, epsilon=0.00001, maxIterations=1
 
     # Setup:
     state = __startState(nodes)
-    transitionProbs = __normalizeRows(transitionWeights)
-    transitionProbs = __integrateRandomSurfer(nodes, transitionProbs, rsp)
+    transitionProbabilities = __normalizeRows(transitionWeights)
+    transitionProbabilities = __integrateRandomSurfer(nodes, transitionProbabilities, rsp)
     
     # Power iteration:
     for iteration in range(maxIterations):
         oldState = state.copy()
-        state = state.dot(transitionProbs)
+        state = state.dot(transitionProbabilities)
         delta = state - oldState
-        if __euclideanNorm(delta) < epsilon: break
+        if __euclideanNorm(delta) < epsilon: 
+            break
 
     return state
