@@ -22,7 +22,11 @@ Note that elements of "transitionWeights" need not be probabilities (meaning its
 
 Return value: This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This Pandas series can be treated as a dict.
 
-## Dependencies
+## Setup
+
+There's not much to it; just include the pagerank.py file in your project, make sure you've installed the dependencies listed below, and use away!
+
+### Dependencies
 
 This module relies on two relatively standard Python libraries:
 
@@ -57,10 +61,10 @@ Arguments:
 
 | Name            | Type      | Description                                                                                                                                                                                                                                                                    | Optional? | Default Value |
 |-----------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|---------------|
-| document        | str       | A string representing a document. Note that all characters in the string must be standard ASCII characters to avoid exceptions.                                                                                                                                                | False     | N/A           |
-| windowSize      | int       | The width of the window in which two words must fall to be considered to have co-occured. For a window size of 2, the default value of this argument, a word will be considered to have co-occurred with any word one or two words away from it in the document.               | True      | 2             |
-| rsp             | float     | Again the random surfer probability that represents the probability with which the random walk through the graph will deviate from its edges and instead jump randomly to any node in the graph.                                                                               | True      | 0.15          |
-| relevantPosTags | list(str) | The TextRank algorithm will filter the words in a document down to only those of certain parts of speech. The default implementation of the algorithm only considers nouns and adjectives. See the original paper that proposed TextRank for a justification of this decision. | True      | ["NN", "ADJ"] |
+| `document`        | `str`       | A string representing a document. Note that all characters in the string must be standard ASCII characters to avoid exceptions.                                                                                                                                                | False     | N/A           |
+| `windowSize`      | `int`       | The width of the window in which two words must fall to be considered to have co-occured. For a window size of 2, the default value of this argument, a word will be considered to have co-occurred with any word one or two words away from it in the document.               | True      | `2`             |
+| `rsp`             | `float`     | Again the random surfer probability that represents the probability with which the random walk through the graph will deviate from its edges and instead jump randomly to any node in the graph.                                                                               | True      | `0.15`          |
+| `relevantPosTags` | `[str]` | The TextRank algorithm will filter the words in a document down to only those of certain parts of speech. The default implementation of the algorithm only considers nouns and adjectives. See the original paper that proposed TextRank for a justification of this decision. | True      | `["NN", "ADJ"]` |
 
 
 Return Value: This function returns a list of words found in the document (filtered by parts of speech) in descending order of node weights.
@@ -75,8 +79,8 @@ Arguments:
 
 | Name     | Type                                        | Description                                                                                             | Optional? | Default Value |
 |----------|---------------------------------------------|---------------------------------------------------------------------------------------------------------|----------|---------------|
-| fileName | Once nested list or dictionary, or similar. | The name or full path of the file that contains the document the TextRank algorithm will be applied to. | False    | N/A           |
-| title    | str                                         | The document's title, an optional argument used only in printed progress indicators.                    | True     | "a document"  |
+| `fileName` | Once nested list or dictionary, or similar. | The name or full path of the file that contains the document the TextRank algorithm will be applied to. | False    | N/A           |
+| `title`    | `str`                                         | The document's title, an optional argument used only in printed progress indicators.                    | True     | `"a document"`  |
 
 Return value: This function has no return value, and instead prints out its results.
 
