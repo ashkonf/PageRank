@@ -1,6 +1,17 @@
 # PageRank
 A Python implementation of Google's famous PageRank algorithm.
 
+## Setup
+
+There's not much to it; just include the pagerank.py file in your project, make sure you've installed the dependencies listed below, and use away!
+
+### Dependencies
+
+This module relies on two relatively standard Python libraries:
+
+1.  [Numpy](http://www.numpy.org/) 
+2.  [Pandas](http://pandas.pydata.org/)
+
 ## Usage
 
 The pagerank module exports one public function:
@@ -21,17 +32,6 @@ Arguments:
 Note that elements of "transitionWeights" need not be probabilities (meaning its rows need not be normalized), and the random surfer probabilities should not be incorporated into it. The "powerIteration" function will perform normalization and integration of the random surfer probabilities.
 
 Return value: This function returns a Pandas series whose keys are node names and whose values are the corresponding steady state probabilities. This Pandas series can be treated as a dict.
-
-## Setup
-
-There's not much to it; just include the pagerank.py file in your project, make sure you've installed the dependencies listed below, and use away!
-
-### Dependencies
-
-This module relies on two relatively standard Python libraries:
-
-1.  [Numpy](http://www.numpy.org/) 
-2.  [Pandas](http://pandas.pydata.org/)
 
 ## Example Usage: TextRank
 
