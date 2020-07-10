@@ -5,7 +5,7 @@ A Python implementation of Google's famous PageRank algorithm.
 
 There's not much to it; just include the pagerank.py file in your project, make sure you've installed the dependencies listed below, and use away!
 
-### Dependencies
+#### Dependencies
 
 This module relies on two relatively standard Python libraries:
 
