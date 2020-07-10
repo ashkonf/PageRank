@@ -3,7 +3,7 @@ A Python implementation of Google's famous PageRank algorithm.
 
 ## Setup
 
-There's not much to it; just include the pagerank.py file in your project, make sure you've installed the dependencies listed below, and use away!
+There's not much to it - just include the pagerank.py file in your project, make sure you've installed the dependencies listed below, and use away!
 
 ### Dependencies
 
