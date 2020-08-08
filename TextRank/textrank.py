@@ -6,7 +6,8 @@ import collections
 import nltk
 import nltk.tokenize
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(".")
+
 import pagerank
 
 '''
@@ -26,27 +27,27 @@ import pagerank
 
 ## TextRank #####################################################################################
     
-def __preprocessDocument(document, relevantPosTags):
+def __preprocess_document(document, relevant_pos_tags):
     '''
     This function accepts a string representation 
     of a document as input, and returns a tokenized
     list of words corresponding to that document.
     '''
     
-    words = __tokenizeWords(document)
-    posTags = __tagPartsOfSpeech(words)
+    words = __tokenize_words(document)
+    pos_tags = __tag_parts_of_speech(words)
     
     # Filter out words with irrelevant POS tags
-    filteredWords = []
+    filtered_words = []
     for index, word in enumerate(words):
         word = word.lower()
-        tag = posTags[index]
-        if not __isPunctuation(word) and tag in relevantPosTags:
-            filteredWords.append(word)
+        tag = pos_tags[index]
+        if not __is_punctuation(word) and tag in relevant_pos_tags:
+            filtered_words.append(word)
 
-    return filteredWords
+    return filtered_words
 
-def textrank(document, windowSize=2, rsp=0.15, relevantPosTags=["NN", "ADJ"]):
+def textrank(document, window_size=2, rsp=0.15, relevant_pos_tags=["NN", "ADJ"]):
     '''
     This function accepts a string representation
     of a document and three hyperperameters as input.
@@ -59,7 +60,7 @@ def textrank(document, windowSize=2, rsp=0.15, relevantPosTags=["NN", "ADJ"]):
     '''
     
     # Tokenize document:
-    words = __preprocessDocument(document, relevantPosTags)
+    words = __preprocess_document(document, relevant_pos_tags)
     
     # Build a weighted graph where nodes are words and
     # edge weights are the number of times words cooccur
@@ -67,56 +68,56 @@ def textrank(document, windowSize=2, rsp=0.15, relevantPosTags=["NN", "ADJ"]):
     # we double count each coocurrence, but that will not
     # alter relative weights which ultimately determine
     # TextRank scores.
-    edgeWeights = collections.defaultdict(lambda: collections.Counter())
+    edge_weights = collections.defaultdict(lambda: collections.Counter())
     for index, word in enumerate(words):
-        for otherIndex in range(index - windowSize, index + windowSize + 1):
-            if otherIndex >= 0 and otherIndex < len(words) and otherIndex != index:
-                otherWord = words[otherIndex]
-                edgeWeights[word][otherWord] += 1.0
+        for other_index in range(index - window_size, index + window_size + 1):
+            if other_index >= 0 and other_index < len(words) and other_index != index:
+                other_word = words[other_index]
+                edge_weights[word][other_word] += 1.0
 
     # Apply PageRank to the weighted graph:
-    wordProbabilities = pagerank.powerIteration(edgeWeights, rsp=rsp)
-    wordProbabilities.sort_values(ascending=False)
+    word_probabilities = pagerank.power_iteration(edge_weights, rsp=rsp)
+    word_probabilities.sort_values(ascending=False)
 
-    return wordProbabilities
+    return word_probabilities
 
 ## NLP utilities ################################################################################
 
-def __asciiOnly(string):
+def __ascii_only(string):
     return "".join([char if ord(char) < 128 else "" for char in string])
 
-def __isPunctuation(word):
+def __is_punctuation(word):
     return word in [".", "?", "!", ",", "\"", ":", ";", "'", "-"]
 
-def __tagPartsOfSpeech(words):
+def __tag_parts_of_speech(words):
     return [pair[1] for pair in nltk.pos_tag(words)]
 
-def __tokenizeWords(sentence):
+def __tokenize_words(sentence):
     return nltk.tokenize.word_tokenize(sentence)
 
 ## tests ########################################################################################
 
-def applyTextRank(fileName, title="a document"):
-    print
-    print "Reading \"%s\" ..." % title
-    filePath = os.path.join(os.path.dirname(__file__), fileName)
-    document = open(filePath).read()
-    document = __asciiOnly(document)
+def apply_text_tank(file_name, title="a document"):
+    print()
+    print("Reading \"%s\" ..." % title)
+    file_path = os.path.join(os.path.dirname(__file__), file_name)
+    document = open(file_path).read()
+    document = __ascii_only(document)
     
-    print "Applying TextRank to \"%s\" ..." % title
-    keywordScores = textrank(document)
+    print("Applying TextRank to \"%s\" ..." % title)
+    keyword_scores = textrank(document)
     
-    print
+    print()
     header = "Keyword Significance Scores for \"%s\":" % title
-    print header
-    print "-" * len(header)
-    print keywordScores
-    print
+    print(header)
+    print("-" * len(header))
+    print(keyword_scores)
+    print()
 
 def main():
-    applyTextRank("Cinderalla.txt", "Cinderalla")
-    applyTextRank("Beauty_and_the_Beast.txt", "Beauty and the Beast")
-    applyTextRank("Rapunzel.txt", "Rapunzel")
+    apply_text_tank("Cinderalla.txt", "Cinderalla")
+    apply_text_tank("Beauty_and_the_Beast.txt", "Beauty and the Beast")
+    apply_text_tank("Rapunzel.txt", "Rapunzel")
 
 if __name__ == "__main__":
     main()
